@@ -403,5 +403,5 @@ on_finish:
   #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
-  - path: .\zmq-4.0.5_*.zip
+  - path:  C:\projects\zmq-windows-ci\zmq-4.0.5_*.zip
  
