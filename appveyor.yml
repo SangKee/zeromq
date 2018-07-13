@@ -129,6 +129,7 @@ init:
   
 install:
   - cmd: dir
+  - cmd: cd "C:\projects\"
   - cmd: rename C:\projects\zmq-windows-ci-qpetr zmq-windows-ci
   - cmd: if %ARCH%==x64-msvc9 xcopy C:\projects\zmq-windows-ci\patch "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\include"
   - cmd: if %ARCH%==win32-msvc9 xcopy C:\projects\zmq-windows-ci\patch "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\include"
