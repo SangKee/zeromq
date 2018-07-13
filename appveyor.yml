@@ -103,7 +103,6 @@ init:
   - cmd: cd C:\projects\
   - appveyor DownloadFile "https://github.com/zeromq/zeromq4-x/archive/v4.0.5.zip"
   - cmd: dir
-  #patch folder name - unknown behaviour
   - cmd: 7z -y x v4.0.5.zip
   - cmd: cd "%LIBZMQ_SOURCEDIR%"
   - cmd: set ZMQHPPDIR=C:\projects\zmq
@@ -129,7 +128,6 @@ init:
   - cmd: cd "C:\projects\zmq-windows-ci-qpetr"
   
 install:
-  - cmd: rename zmq-windows-ci-qpetr zmq-windows-ci
   - cmd: if %ARCH%==x64-msvc9 xcopy C:\projects\zmq-windows-ci\patch "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\include"
   - cmd: if %ARCH%==win32-msvc9 xcopy C:\projects\zmq-windows-ci\patch "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\include"
   - cmd: move /Y C:\projects\zmq-windows-ci\patch\libzmq.vcxproj "%LIBZMQ_SOURCEDIR%"\builds\msvc\libzmq\libzmq.vcxproj
