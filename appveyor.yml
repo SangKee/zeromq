@@ -134,7 +134,7 @@ init:
   - cmd: 7z -y x zeromq-4.0.5.zip
   - cmd: cd "%LIBZMQ_SOURCEDIR%"
   - cmd: set ZMQHPPDIR=C:\projects\zmq
-  - cmd: git clone --depth 1 --quiet https://github.com/zeromq/cppzmq.git %ZMQHPPDIR%
+  - cmd: git clone --depth 1 -b v4.7.0 --quiet https://github.com/zeromq/cppzmq.git %ZMQHPPDIR%
   #Pthread-Win32
   - cmd: cd "C:\projects\"
   - cmd: md pthreads-win32
