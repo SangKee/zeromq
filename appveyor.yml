@@ -476,15 +476,12 @@ after_build:
   - cmd: 7z a zmq-4.0.5_%ARCH%.zip %LIBZMQ_SOURCEDIR%\include\
   - cmd: 7z a zmq-4.0.5_%ARCH%.zip %LIBZMQ_SOURCEDIR%\lib\
   - cmd: 7z a zmq-4.0.5_%ARCH%.zip %LIBZMQ_SOURCEDIR%\bin\
-  - cmd: copy zmq-4.0.5_%ARCH%.zip C:\projects\zmq-windows-ci\
-  #ugly directory naming fix
-  - cmd: cd "C:\projects\"
-  - cmd: rename C:\projects\zmq-windows-ci zmq-windows-ci-qpetr
+  - cmd: md C:\projects\zmq-windows-ci\artifacts
+  - cmd: move zmq-4.0.5_%ARCH%.zip C:\projects\zmq-windows-ci\artifacts
 
 on_finish:
   #RDP for finish
   #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
-  - path: .\zmq-4.0.5_*.zip
- 
+  - path: artifacts\*.zip
