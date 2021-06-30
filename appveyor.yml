@@ -115,6 +115,9 @@ environment:
 matrix:      
     allow_failures:
     - ARCH: x64-msvc9
+
+clone_folder: c:\projects\zmq-windows-ci
+
 init:
   # go to hell Xamarin (see http://help.appveyor.com/discussions/problems/4569)
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" del "C:\Program Files (x86)\MSBuild\4.0\Microsoft.Common.Targets\ImportAfter\Xamarin.Common.targets"
@@ -158,7 +161,6 @@ init:
 install:
   - cmd: dir
   - cmd: cd "C:\projects\"
-  - cmd: rename %APPVEYOR_BUILD_FOLDER% zmq-windows-ci
   - cmd: if %ARCH%==x64-msvc9 xcopy C:\projects\zmq-windows-ci\patch "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\include"
   - cmd: if %ARCH%==win32-msvc9 xcopy C:\projects\zmq-windows-ci\patch "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\include"
   - cmd: move /Y C:\projects\zmq-windows-ci\patch\libzmq.vcxproj "%LIBZMQ_SOURCEDIR%"\builds\msvc\libzmq\libzmq.vcxproj
@@ -484,4 +486,4 @@ on_finish:
   #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
-  - path: artifacts\*.zip
+  - path: 'artifacts\*.zip'
